@@ -13,5 +13,30 @@ public class GameOfLife {
 			}
 		}
 		return aliveNeighbours;
+	}	
+	
+	public boolean[][] nextGeneration(boolean[][] currentBoard) {
+		int rows=currentBoard.length,cols=currentBoard[0].length;
+		int aliveNeighbours=0;
+		boolean[][] newGeneration=new boolean[rows][cols];
+		for(int i=0;i<rows;i++) {
+			for(int j=0;j<cols;j++) {
+				aliveNeighbours=countNeighbours(currentBoard,i,j);
+				if(currentBoard[i][j]) {
+					if(aliveNeighbours<2||aliveNeighbours>3)
+						newGeneration[i][j]=false;
+					else
+						newGeneration[i][j]=true;
+				}
+				else {
+					if(aliveNeighbours==3)
+						newGeneration[i][j]=true;
+					else
+						newGeneration[i][j]=false;
+				}
+			}
+		}
+		return newGeneration;
 	}
+	
 }
