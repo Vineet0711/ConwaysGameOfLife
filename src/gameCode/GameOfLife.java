@@ -39,4 +39,12 @@ public class GameOfLife {
 		return newGeneration;
 	}
 	
+	public boolean[][] generate(boolean[][] board,int n){
+		int rows=board.length,cols=board[0].length;
+		boolean[][] nextGenerationBoard=new boolean[rows][cols];
+		for(int i=0;i<n;i++) {
+			nextGenerationBoard=nextGeneration(board);
+		}
+		return nextGenerationBoard;
+	}
 }
