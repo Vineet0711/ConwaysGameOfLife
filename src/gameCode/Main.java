@@ -19,6 +19,7 @@ public class Main {
 		
 		System.out.println("Enter board(Use 1 for alive cell and 0 for dead cell): ");
 		int temp=0;
+		boolean inputType=true;
 		for(int i=0;i<rows;i++) {
 			for(int j=0;j<cols;j++) {
 				temp=k.nextInt();
@@ -26,7 +27,25 @@ public class Main {
 					board[i][j]=true;
 				else if(temp==0)
 					board[i][j]=false;
+				else
+					inputType=false;
 			}
+		}
+		if(!inputType) {
+			System.out.println("You have entered Wrong input, Board can only contain 0 and 1. ");
+		}else {
+			GameOfLife game=new GameOfLife();
+			result=game.generate(board, n);
+			for(int i=0;i<rows;i++) {
+				for(int j=0;j<cols;j++) {
+					if(result[i][j])
+						System.out.print(1+" ");
+					else
+						System.out.print(0+" ");
+				}
+				System.out.println();
+			}
+		
 		}
 		k.close();
 	}
