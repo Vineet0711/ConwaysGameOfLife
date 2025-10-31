@@ -1,7 +1,7 @@
 package gameCode;
 
 public class GameOfLife {
-	public int countNeighbours(boolean[][] currentBoard,int row,int col) {
+	private int countNeighbours(boolean[][] currentBoard,int row,int col) {
 		int rows=currentBoard.length,cols=currentBoard[0].length;
 		int aliveNeighbours=0;
 		for(int i=row-1;i<=row+1;i++) {
@@ -15,7 +15,7 @@ public class GameOfLife {
 		return aliveNeighbours;
 	}	
 	
-	public boolean[][] nextGeneration(boolean[][] currentBoard) {
+	private boolean[][] nextGeneration(boolean[][] currentBoard) {
 		int rows=currentBoard.length,cols=currentBoard[0].length;
 		int aliveNeighbours=0;
 		boolean[][] newGeneration=new boolean[rows][cols];
@@ -42,8 +42,9 @@ public class GameOfLife {
 	public boolean[][] generate(boolean[][] board,int n){
 		int rows=board.length,cols=board[0].length;
 		boolean[][] nextGenerationBoard=new boolean[rows][cols];
+		nextGenerationBoard=board;
 		for(int i=0;i<n;i++) {
-			nextGenerationBoard=nextGeneration(board);
+			nextGenerationBoard=nextGeneration(nextGenerationBoard);
 		}
 		return nextGenerationBoard;
 	}
